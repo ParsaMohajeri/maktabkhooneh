@@ -7,7 +7,7 @@
     <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
     {% for post in posts %}
     <a class="d-flex align-items-left text-decoration-none bg-white mb-3" href="">
-        <img class="img-fluid" src="{{post.image.url}}" alt="">
+        <img class="img-fluid-recent" src="{{post.image.url}}" alt="">
         <div class="pl-3">
             <h6 href="{% url 'blog:single' pid=post.id %}" class="m-1">{{post.title}}</h6>
             <small>{{post.published_date|naturaltime}}</small>

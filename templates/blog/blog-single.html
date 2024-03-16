@@ -83,7 +83,7 @@
                     <div class="pb-3">
                         <div class="blog-item">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{% static 'img/blog-1.jpg' %}" alt="">
+                                <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
                                 <div class="blog-date">
                                     <small class="text-white text-uppercase">{{post.published_date|date:"y/m/d"}}</small>
                                     <small class="text-white">views:{{post.counted_views}}</small>

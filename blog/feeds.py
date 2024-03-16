@@ -4,9 +4,9 @@ from blog.models import Post
 
 
 class LatestEntriesFeed(Feed):
-    title = "blog newest posts"
+    title = "newest posts for blog"
     link = "/rss/feed"
-    description = "best blog ever"
+    description = "these are posts of blog"
 
     def items(self):
         return Post.objects.filter(status=True)
