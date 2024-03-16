@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'website.apps.WebsiteConfig',
     'blog',
+    'accounts',
 ]
 
 ROBOTS_USE_HOST=True

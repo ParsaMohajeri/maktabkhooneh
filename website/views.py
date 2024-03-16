@@ -24,3 +24,32 @@ def contact_view(request):
             messages.add_message(request,messages.ERROR,"your ticket didnt submited")
     form=ContactForm()
     return render(request,'website/contact.html',{'form':form})
+
+
+def newsletter_view(request):
+    if request.method=='POST':
+        form=NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    
+    else:
+        return HttpResponseRedirect('/')
+
+def test_view(request):
+    if request.method == 'POST':
+        form=ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('done')
+        else:
+            return HttpResponse('not valid')
+    form=ContactForm()
+    return render(request,'test.html',{'form':form})
+
+
+def coming_soon_view(request):
+    return render(request,'website/404.html')
+
+def handler404(request, *args, **kwargs):
+    return HttpResponseRedirect('/404')
