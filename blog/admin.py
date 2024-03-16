@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
-from blog.models import Post
+from blog.models import Post,Category
 
 
 
@@ -14,5 +14,5 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields=['title','content']
     summernote_fields = ('content',)
 
-
+admin.site.register(Category)
 admin.site.register(Post)

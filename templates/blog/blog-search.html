@@ -1,0 +1,6 @@
+<div class="mb-5">
+    <form class="search-form" class="input-group-text bg-primary border-primary text-white" action="{% url 'blog:search' %}" method="get">
+        <input placeholder="Search Posts" name="s" type="text" class="form-control p-4" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+        <button class="input-group-text bg-primary border-primary text-white" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>

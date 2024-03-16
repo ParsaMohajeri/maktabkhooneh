@@ -1,0 +1,21 @@
+{% load static %}
+
+{% load blog_tags %}
+<!-- Recent Post -->
+<div class="mb-5">
+    
+    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
+    
+    <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
+        {% for post in posts %}
+        <img class="img-fluid" src="{{post.image.url}}" alt="">
+        <div class="pl-3">
+            <a href="{% url 'blog:single' pid=post.id %}" ><h6 class="m-1">{{post.title}}</h6></a>
+            <small>{{post.published_date|date:'d/m/y'}}</small>
+
+        </div>
+        {% endfor %}
+    
+    </a>
+    
+</div>

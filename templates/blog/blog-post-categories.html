@@ -1,0 +1,13 @@
+<!-- Category List -->
+<div class="mb-5">
+    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Categories</h4>
+    <div class="bg-white" style="padding: 30px;">
+        {% for name,count in categories.items %}
+        <ul class="list-inline m-0">
+            <li class="mb-3 d-flex justify-content-between align-items-center">
+                <a class="text-dark" href="{% url 'blog:category' cat_name=name %}"><i class="fa fa-angle-right text-primary mr-2"></i>{{name}}</a>
+                <span class="badge badge-primary badge-pill">{{count}}</span></a></li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>

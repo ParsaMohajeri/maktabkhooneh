@@ -1,0 +1,25 @@
+{% load static %}
+{% for post in posts %}
+<div class="col-lg-4 col-md-6 mb-4 pb-2">
+    <div class="blog-item">
+        <div class="position-relative">
+            <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
+            <div class="blog-date">
+                <small class="text-white text-uppercase">{{post.published_date|date:"y/m/d"}}</small>
+                <small class="text-white">views:{{post.counted_views}}</small>
+            </div>
+        </div>
+        <div class="bg-white p-4">
+            {% for cat in post.category.all %}
+            <a href="{% url 'blog:category' cat_name=cat.name %}"> {{cat.name}}</a>{% if not forloop.last %},{% endif %}
+            {% endfor %}
+            <div class="d-flex mb-2">
+                <a class="text-primary text-uppercase text-decoration-none" href="">{{post.author}}</a>
+                <span class="text-primary px-2">|</span>
+                <a class="text-primary text-uppercase text-decoration-none" href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a>
+            </div>{{post.image.url}}
+            <a class="h5 m-0 text-decoration-none" href="#">{{post.content|truncatewords:4}} </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
