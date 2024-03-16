@@ -9,7 +9,7 @@ from django.utils import timezone
 # from django.http import HttpResponseRedirect
 from blog.models import Post
 # Create your views here.
-def blog_view(request,):
+def blog_view(request):
     posts=Post.objects.filter(status=1,published_date__lte=timezone.now())
     # posts=Paginator(posts,4)
     # try:

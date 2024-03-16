@@ -1,5 +1,7 @@
 from django.urls import path
 from blog.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 # from blog.feeds import LatestEntriesFeed
 app_name = 'blog'
 
@@ -13,4 +15,4 @@ urlpatterns = [
     # path('search/',blog_search,name='search'),
     # path('post-<int:pid>',test, name='test'), 
     # path("rss/feed/", LatestEntriesFeed()),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

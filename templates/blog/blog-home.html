@@ -81,7 +81,7 @@
                         <div class="col-md-6 mb-4 pb-2">
                             <div class="blog-item">
                                 <div class="position-relative">
-                                    <img class="img-fluid w-100" src="{% static 'img/blog-1.jpg' %}" alt="">
+                                    <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
                                     <div class="blog-date">
                                         <h6 class="font-weight-bold mb-n1">{{post.published_date}}</h6>
                                         <small class="text-white text-uppercase">{{post.counted_views}}</small>
@@ -93,7 +93,7 @@
                                         <span class="text-primary px-2">|</span>
                                         <a class="text-primary text-uppercase text-decoration-none" href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a>
                                     </div>
-                                    <a class="h5 m-0 text-decoration-none" href="#">{{post.content}}</a>
+                                    <a class="h5 m-0 text-decoration-none" href="#">{{post.content}} {{post.image.url}}</a>
                                 </div>
                             </div>
                         </div>
