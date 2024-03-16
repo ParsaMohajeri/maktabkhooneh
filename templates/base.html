@@ -1,4 +1,6 @@
 {% load static %}
+{% load blog_tags %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +25,9 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
+    {% compress css %}
     <link href="{% static 'css/style.css' %}"rel="stylesheet">
+    {% endcompress %}
 </head>
 
 {% if messages %}
@@ -57,9 +61,17 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p>sign up</p>
+
+                        {% if request.user.is_authenticated %}
+                        <a href="#">Logged in as {{request.user.username}}</a>
+                        <p class="text-body px-3">|</a>
+                        <a href="{% url 'accounts:logout' %}">Logout</a>
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}">Login</a>
                         <p class="text-body px-3">|</p>
-                        <p>login</p>
+                        <a href="{% url 'accounts:signup' %}">Signup</a>
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -158,12 +170,17 @@
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
                 <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
+                    <form 
+                    action="{% url 'website:newsletter' %}"
+                    method="post" class="subscription relative">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="email" type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary px-3">submit</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

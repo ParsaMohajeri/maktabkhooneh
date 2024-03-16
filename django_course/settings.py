@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'robots',
     'taggit',
     'django_summernote',
+    'compressor',
     'debug_toolbar',
     'website.apps.WebsiteConfig',
     'blog',
@@ -195,3 +196,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'parsamohajeri1188@gmail.com'
+EMAIL_HOST_PASSWORD = "xlls ziss artk wwmh"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+MAINTENANCE_MODE=True
+
+COMPRESS_ENABLED = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+

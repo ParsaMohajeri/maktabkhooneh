@@ -42,7 +42,7 @@ urlpatterns = [
     path('robots.txt',include('robots.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
     path('captcha/', include('captcha.urls')),
-    # re_path(r'^', TemplateView.as_view(template_name='../templates/coming_soon'), name='maintenance'),
+    # re_path(r'^', TemplateView.as_view(template_name='../templates/website/coming_soon'), name='maintenance'),
     path("accounts/", include("django.contrib.auth.urls")),
 
     # re_path(r'^', views.maintenance, name='maintenance')
@@ -50,7 +50,12 @@ urlpatterns = [
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-handler404 = 'website.views.handler404'
+# handler404 = 'website.views.handler404'
+
+
+#-----------------------------------------------------------------------------------------
+#  404 page   MAINTENANCE_MODE
+
 
 # if settings.MAINTENANCE_MODE:
 #     urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='../templates/website/coming_soon.html'), name='maintenance'))
