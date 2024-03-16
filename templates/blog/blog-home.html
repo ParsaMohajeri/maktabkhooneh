@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load blog_tags %}
+{% load blog_tags %} 
+
 {% block content %}
 
     <!-- Header Start -->
@@ -138,11 +139,9 @@
     
                     {% include 'blog/blog-search.html' %}
                 
-                    {% postcategories    %}
+                    {% postcategories %}
     
-                    {% include 'blog/blog-recent-posts.html' %}
-    
-                    {% include 'blog/blog-tags.html' %}
+                    {% latestposts %}
                 </div>
             </div>
         </div>

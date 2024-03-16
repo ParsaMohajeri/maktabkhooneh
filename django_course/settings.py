@@ -31,16 +31,36 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'captcha',
+    'robots',
+    'taggit',
     'django_summernote',
+    'debug_toolbar',
     'website.apps.WebsiteConfig',
     'blog',
 ]
+
+ROBOTS_USE_HOST=True
+ROBOTS_USE_SITEMAP=True
+
+SITE_ID=2
+
+
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
+
+
 
 SUMMERNOTE_THEME='bs4'
 
@@ -73,7 +93,6 @@ SUMMERNOTE_CONFIG = {
 }
 
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -82,6 +101,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'django_course.urls'
@@ -115,6 +135,9 @@ DATABASES = {
     }
 }
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -151,14 +174,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+import os
 
 STATIC_URL = '/static/'
 STATIC_ROOT= BASE_DIR / 'static'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT= BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 STATICFILES_DIRS = [
@@ -170,3 +193,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
